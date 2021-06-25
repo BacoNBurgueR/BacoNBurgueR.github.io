@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html lang=”pt-br”>
+	<head>
+	  	<meta charset=”UTF-8”>
+
+	  	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	  	<link rel="sortcut icon" href="https://as2.ftcdn.net/jpg/02/33/05/69/500_F_233056931_chB2vj6ThgrK2YRzKr9Ahg58XTw1K3Tn.jpg" type="image/x-icon" />
+
+	 	<title>Gostoso Do Guerrat</title>
+	</head>
+	<body>
+		<div id="principal">
+			
+			<label>Calculo de pontos para skins das loja do Guerrat</label>
+			
+			<div>
+				<br>
+				<label for="User">Pontos Sem Sub</label>
+				<input class="ipt" type="number" id="ptNoSub" style="margin-left: 75px; width: 75px;" maxlength="6" 
+					oninput="if (this.value > 999999) {this.value = 999999}else if (this.value < 1 ){this.value=0}" value="5"> <br>
+
+				<label for="User">Pontos Com Sub</label>
+				<input class="ipt" type="number" id="ptWithSub" style="margin-left: 75px; width: 75px;" maxlength="6" 
+					oninput="if (this.value > 999999) {this.value = 999999}else if (this.value < 1 ){this.value=0}" value="10"> <br>
+
+				<label for="User">Valor Skin em Pontos</label>
+				<input class="ipt" type="number" id="vlSkin" style="margin-left: 9px; width: 75px;" 
+					oninput="if (this.value > 999999) {this.value = 999999}else if (this.value < 1 ){this.value=0}" value="11000"> <br>
+
+				<label for="User">Media Hrs live/dia</label>
+				<input class="ipt" type="number" id="hrLive" style="margin-left: 31px; width: 75px;" maxlength="2" 
+					oninput="if (this.value > 24) {this.value = 24}else if (this.value < 1 ){this.value=0}" value="6"><br>
+
+			</div>
+			<br>
+			<button class="button" onclick="calcular()" style="width: 326px;"> Calcular</button>
+
+			<div id="resultados"></div><span></span>
+		    <div class="footer">
+   				 u caba lá axo o easter egg muuito vago. ~~~~~~~ FEIO COM AMOR PELO BacoNBurgueR;  25/26/2021
+			</div>
+
+		</div>
+
+
+		<script type="text/javascript">
+
+			function calcular() {
+
+				var ptNoSub = $("#ptNoSub").val().trim();
+				var ptWithSub = $("#ptWithSub").val().trim();
+				var vlSkin = $("#vlSkin").val().trim();
+				var hrLive = $("#hrLive").val().trim();
+								
+				$("#resultados").empty();
+				$("#resultados").append('<br>');
+				$("#resultados").append('<span class="result">Pontos por hora SEM SUB: '+ Math.ceil(pontosPorHora(ptNoSub)) + ' pts</span><br>');
+				$("#resultados").append('<span class="result">Horas para skin SEM SUB: '+ Math.ceil(horasToSkin(ptNoSub, vlSkin)) + ' hrs</span><br>');
+				$("#resultados").append('<span class="result">DIAS para skin SEM SUB : '+ Math.ceil(diasLive(hrLive, ptNoSub, vlSkin)) + ' dias</span><br><br>');
+
+				$("#resultados").append('<span class="result">Pontos por hora COM SUB: '+ Math.ceil(pontosPorHora(ptWithSub)) + ' pts</span><br>');
+				$("#resultados").append('<span class="result">Horas para skin COM SUB: '+ Math.ceil(horasToSkin(ptWithSub, vlSkin)) + ' hrs</span><br>');
+				$("#resultados").append('<span class="result">DIAS para skin COM SUB : '+ Math.ceil(diasLive(hrLive, ptWithSub, vlSkin)) + ' dias</span><br><br>');
+
+			}
+
+			function diasLive(hrs, pt, vlSkin) {
+				return horasToSkin(pt, vlSkin)/hrs;
+			}
+
+			function horasToSkin(pt, vlSkin) {
+
+				pontosPorHora(pt);
+				return vlSkin/pontosPorHora(pt);
+			}
+
+			function pontosPorHora(pt) {
+				return (pt*6);
+			}
+
+
+		</script>
+
+		<style type="text/css">
+			html{
+				background: rgb(212, 212, 212);
+			}
+			div{
+			    font-family: monospace;
+			    font-size: x-large;
+			}
+
+			.button{
+			    font-family: monospace;
+			    font-size: x-large;
+			    border:	1px solid #566963;
+			    padding: 10px;
+			}
+			.ipt{
+				padding:8px 5px;
+				border:	1px solid #566963;
+				text-align: right;
+				font-size: large;
+			}
+			.button {
+			  transition-duration: 0.4s;
+			}
+
+			.button:hover {
+			  background-color: #4CAF50; /* Green */
+			  color: white;
+			  border-radius: 10px;
+			  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+			  cursor: pointer;
+			}			
+
+			.result {
+			  transition-duration: 0.4s;
+			}
+
+			.result:hover {
+				background-color: #41a3c4;
+			 	color: white;
+			 	border-radius: 2px;
+			 	border-width: 1px;
+			 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.99), 0 17px 50px 0 rgba(0,0,0,0.19);
+			 	cursor: pointer;
+			}
+			.footer {
+				background: rgb(212, 212, 212);
+			    position:absolute;
+			    bottom:0;
+			    width:100%;
+			    text-align: center;
+			    color: rgb(212, 212, 212);
+			    font-size: larger;
+			}
+
+			.footer:hover {
+				background: black;
+			    color: white;
+			    font-style: italic;
+			}
+
+
+		</style>
+	</body>
+</html>
