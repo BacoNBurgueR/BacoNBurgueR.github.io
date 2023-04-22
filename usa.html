@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="result"></p>
+
+
+
+<script>
+	
+	const tanks = [
+	"Racing M18",
+	"ADATS",
+	"AGS",
+	"Calliope",
+	"CCVL",
+	"Cobra King",
+	"Grant I (USA)",
+	"HSTV-L"
+	];
+
+	var randomTank = Math.floor(Math.random() * tanks.length);
+	document.getElementById("result").innerHTML = tanks[randomTank];
+
+</script>
+</body>
+</html>
